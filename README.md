@@ -38,3 +38,25 @@ tests --测试代码文件
 ## 项目亮点
 1) 使用智能指针
 2) Logger和LogAppender之间采用观察者模式
+
+## Day6
+
+初步完成了日志系统的设计和调试，将日志的几个模块条理化
+Logger--日志类，包含了LogAppender(日志输出地类)，LogFormatter(日志输出格式类)。其中Appender类也有LogFormatter类对象指针，其派生的不同输出地子类的日志输出格式不同
+另外声明一个格式抽象类FormatItem，含有一个纯虚函数format，对于时间，错误信息等日志信息，由相应派生类具体实现format方法。
+```
+Logger:
+  LoggerAppender::ptr
+  LoggerFormatter::ptr
+-------------------------
+LoggerAppender:
+  LoggerFormatter::ptr
+-------------------------
+LoggerFormatter:
+  FormatItem::ptr
+-------------------------
+//输出到控制台的Appender
+class StdoutLogAppender : public LogAppender 
+//时间日志输出器
+class DateTimeFormatItem :public FormatItem
+```
