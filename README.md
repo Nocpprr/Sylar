@@ -26,6 +26,9 @@ tests --测试代码文件
   Appender（日志输出地方）
 ```
 
+## 配置系统
+Config --> yaml
+
 ## 采用协程库封装
 
 ## Socket系列函数开发
